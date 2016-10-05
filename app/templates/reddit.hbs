@@ -1,19 +1,14 @@
 <h2>List of Reddits</h2>
 
-{{#each model}}
-    <div class="reddit">
-      <h2>{{data.score}}</h2>
-      <p>{{data.title}}</p>
-      <p>Comments Count: {{data.num_comments}}</p>
-      {{#if data.archived}}
-        <p>Archived</p>
-      {{else}}
-        <p>Not Archived</p>
-      {{/if}}
-      <input type="button" id="hideshow" value="Show Description"/>
-      <p>selftext: {{data.selftext}}</p>
-    </div>
-  {{else}}
-    <p>Nothing found.</p>
-  {{/each}}
+{{#each model as |redditPost|}}
+  <div class="reddit">
+    <h4><a href={{redditPost.url}}>{{redditPost.title}}</a></h4>
+    <h6>Score: {{redditPost.score}}</h6>
+    <p>Comments Count: {{redditPost.num_comments}}</p>
+    <p>Archived? {{redditPost.archived}}</p>
+  </div>
+{{else}}
+  <p>Nothing found.</p>
+{{/each}}
+
 {{outlet}}
