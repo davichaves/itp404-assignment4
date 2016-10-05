@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    return ['Marie Curie', 'Mae Jemison', 'Albert Hofmann'];
+  model: function() {
+    var test = Ember.$.getJSON(`https://www.reddit.com/r/emberjs.json`);
+    console.log(test);
+    return test;
   }
 });

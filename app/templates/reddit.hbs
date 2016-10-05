@@ -1,9 +1,19 @@
 <h2>List of Reddits</h2>
 
-<ul>
-  {{#each model as |scientist|}}
-    <li>{{scientist}}</li>
+{{#each model}}
+    <div class="reddit">
+      <h2>{{data.score}}</h2>
+      <p>{{data.title}}</p>
+      <p>Comments Count: {{data.num_comments}}</p>
+      {{#if data.archived}}
+        <p>Archived</p>
+      {{else}}
+        <p>Not Archived</p>
+      {{/if}}
+      <input type="button" id="hideshow" value="Show Description"/>
+      <p>selftext: {{data.selftext}}</p>
+    </div>
+  {{else}}
+    <p>Nothing found.</p>
   {{/each}}
-</ul>
-
 {{outlet}}
